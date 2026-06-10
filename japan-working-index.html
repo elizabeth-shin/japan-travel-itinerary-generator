@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Japan Itinerary Builder</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f9f5f1; color: #222; box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: inherit; }
+    header { background: #1a4265; color: #fff; padding: 2rem 1rem; text-align: center; }
+    main { max-width: 860px; margin: 1.5rem auto; padding: 0 1rem; }
+    .card { background: #fff; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); padding: 1.75rem; margin-bottom: 1.5rem; }
+    label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
+    input, select, button { width: 100%; padding: 0.95rem 1rem; margin-bottom: 1rem; border: 1px solid #ccd6dd; border-radius: 8px; font-size: 1rem; box-sizing: border-box; }
+    button { background: #1a4265; color: #fff; border: none; cursor: pointer; transition: transform 0.2s ease; }
+    button:hover { transform: translateY(-1px); }
+    #result { white-space: pre-wrap; line-height: 1.6; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Japan Itinerary Builder</h1>
+    <p>Enter your destination, budget, travel month, and number of days to generate a simple itinerary.</p>
+  </header>
+  <main>
+    <section class="card">
+      <form id="itinerary-form">
+        <label for="destination">Destination</label>
+        <input id="destination" name="destination" type="text" placeholder="Tokyo, Kyoto, Osaka, Hokkaido..." autocomplete="off" required />
+        <label for="budget">Budget</label>
+        <select id="budget" name="budget" required>
+          <option value="economy">Economy</option>
+          <option value="moderate" selected>Moderate</option>
+          <option value="premium">Premium</option>
+        </select>
+        <label for="month">Travel Month</label>
+        <select id="month" name="month" required>
+          <option value="January">January</option><option value="February">February</option>
+          <option value="March">March</option><option value="April">April</option>
+          <option value="May">May</option><option value="June">June</option>
+          <option value="July">July</option><option value="August">August</option>
+          <option value="September">September</option><option value="October">October</option>
+          <option value="November">November</option><option value="December">December</option>
+        </select>
+        <label for="days">Number of Days</label>
+        <select id="days" name="days" required>
+          <option value="1">1 Day</option>
+          <option value="2">2 Days</option>
+          <option value="3" selected>3 Days</option>
+        </select>
+        <button type="submit">Generate Itinerary</button>
+      </form>
+    </section>
+    <section class="card">
+      <h2>Generated Itinerary</h2>
+      <div id="result">Your itinerary will appear here after submission.</div>
+    </section>
+  </main>
+  <script>
+    const form = document.getElementById('itinerary-form');
+    const result = document.getElementById('result');
+    const sampleActivities = {
+      sightseeing: ["Visit a major shrine or temple","Explore a traditional neighborhood","Walk through a famous shopping street","Visit a local market","Enjoy a city viewpoint or observatory"],
+      culture: ["Visit a museum or art gallery","Join a tea ceremony experience","Explore a historic district","Visit a castle or heritage site"],
+      food: ["Try a local ramen shop","Visit an izakaya for small plates","Have sushi at a neighborhood spot","Try a specialty dessert or cafe"]
+    };
+    const budgetNotes = {
+      economy: "Focus on local spots, casual eateries, and free or low-cost attractions.",
+      moderate: "Mix of well-known places and local favorites, with some paid experiences.",
+      premium: "Include higher-end dining, special experiences, and reserved activities."
+    };
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const destination = form.destination.value.trim() || "your destination";
+      const budget = form.budget.value;
+      const month = form.month.value;
+      const days = parseInt(form.days.value, 10);
+      let output = `Japan Itinerary for ${destination}\nMonth: ${month}\nBudget: ${budget.charAt(0).toUpperCase() + budget.slice(1)}\n\n`;
+      output += budgetNotes[budget] + "\n\n";
+      for (let day = 1; day <= days; day++) {
+        output += `Day ${day}:\n`;
+        output += `- Morning: ${sampleActivities.sightseeing[(day-1) % sampleActivities.sightseeing.length]} in ${destination}.\n`;
+        output += `- Afternoon: ${sampleActivities.culture[(day-1) % sampleActivities.culture.length]}.\n`;
+        output += `- Evening: ${sampleActivities.food[(day-1) % sampleActivities.food.length]}.\n\n`;
+      }
+      result.textContent = output;
+    });
+  </script>
+</body>
+</html>
