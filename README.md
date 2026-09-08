@@ -7,11 +7,11 @@ https://elizabeth-shin.github.io/japan-travel-itinerary-generator/
 
 ## How It Works
 
-1. Select a Japan destination (Tokyo, Kyoto, Osaka, Hokkaido, etc.)
+1. Type in a destination (Tokyo, Kyoto, Osaka, Hokkaido, or anywhere else in Japan)
 2. Choose your budget level: Economy, Moderate, or Premium
 3. Select your travel month
-4. Choose trip length: 1, 2, or 3 days
-5. Click "Generate Itinerary" to see your personalized plan
+4. Choose trip length: 1, 2, 3, 4, 5, or 7 days
+5. Click "Generate Itinerary" to see your personalized, Claude-generated plan
 
 ## Tech Stack
 
