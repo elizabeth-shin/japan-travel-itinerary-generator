@@ -1,10 +1,9 @@
 # Japan Travel Itinerary Builder
 
-An interactive travel itinerary generator for Japan. Enter a destination, budget level, travel month, and number of days to generate a personalized day-by-day itinerary.
+An interactive travel itinerary generator for Japan. Enter a destination, budget level, travel month, and number of days to generate a personalized day-by-day itinerary, powered by the Claude API.
 
-## Live Demo
-
-[https://cozy-raindrop-b192e2.netlify.app/](https://cozy-raindrop-b192e2.netlify.app/)
+Live Demo
+https://elizabeth-shin.github.io/japan-travel-itinerary-generator/
 
 ## How It Works
 
